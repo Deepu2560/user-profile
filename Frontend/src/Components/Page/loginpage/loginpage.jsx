@@ -3,6 +3,28 @@ import "./loginpage.css";
 import { Form, Button } from "react-bootstrap";
 
 export const Authpage = () => {
+  // Log in form sample data
+  const logInSample = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    phone: "",
+    bio: "",
+  };
+
+  // Log in input value
+  const [logInData, setlogInData] = useState(logInSample);
+
+  // handle change of input element
+  const handleChange = ({ name, value }) => {
+    setlogInData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // taking input from logIn data and setting default value
+  const { email, password } = logInData;
+
+  // main html page
   return (
     <div id="login">
       <div id="login-main-div">
