@@ -43,7 +43,7 @@ const register = async (req, res) => {
 // login function for user login.
 const login = async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.body.email }).lean().exec();
+    const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
       console.log("=>> User not found :-", req.body.email);
@@ -54,23 +54,41 @@ const login = async (req, res) => {
       });
     }
 
-    console.log(user);
-    // let match = user.checkPassword(req.body.password);
+    let match = user.checkPassword(req.body.password);
 
-    // if (!match) {
-    //   console.log("=>> password not match for :-", req.body.email);
-    return res.status(400).send({
-      error: true,
-      token: "",
-      mesasge: "Please check your email or password",
-    });
-    // }
+    if (!match) {
+      console.log("=>> password not match for :-", req.body.email);
+      return res.status(400).send({
+        error: true,
+        token: "",
+        mesasge: "Please check your email or password",
+      });
+    }
 
-    // const token = newToken(user);
+    const token = newToken(user);
 
-    // console.log(`=>> ${user.name} is logged in`);
+    console.log(`=>> ${user.name} is logged in`);
 
-    // res.status(200).send({ error: false, token });
+    res.status(200).send({ error: false, token });
+  } catch (error) {
+    console.log("=>>> Login ERROR", error);
+    res.status(500).send({ error: true, token: "", message: error.message });
+  }
+};
+
+const edit = async (req, res) => {
+  try {
+    let user = await User.findByIdAndUpdate(req.params.id, {
+      $set: req.body,
+    })
+      .lean()
+      .exec();
+
+    const token = newToken(user);
+
+    console.log(`=>> ${user.name} is edited in`);
+
+    res.status(200).send({ error: false, token });
   } catch (error) {
     console.log("=>>> Login ERROR", error);
     res.status(500).send({ error: true, token: "", message: error.message });
@@ -78,4 +96,4 @@ const login = async (req, res) => {
 };
 
 // exporting register and login function
-module.exports = { register, login };
+module.exports = { register, login, edit };
