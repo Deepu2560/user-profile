@@ -31,7 +31,7 @@ const register = async (req, res) => {
 
     const token = newToken(user);
 
-    console.log(`=>> ${req.body.name} is registered. token: ${token}`);
+    console.log(`=>> ${req.body.email} is registered. token: ${token}`);
 
     res.status(201).send({ error: false, token });
   } catch (error) {
