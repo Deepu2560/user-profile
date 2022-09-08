@@ -7,9 +7,9 @@ import { UserProfilePage } from "./Page/user/userProfile";
 export const Allroutes = () => {
   return (
     <Routes>
-      <Route path="/login" element={<Authpage />} />
+      <Route path="/" element={<Authpage />} />
       <Route path="/signup" element={<SignupPage />} />
-      <Route path="/" element={<UserProfilePage />} />
+      <Route path="/user" element={<UserProfilePage />} />
     </Routes>
   );
 };
