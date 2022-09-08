@@ -14,7 +14,7 @@ export const handlesignup = (dispatch, signupdata) => {
   return function () {
     dispatch(signupLoading());
     axios
-      .get(`http://localhost:8080/auth/register`, signupdata)
+      .post(`http://localhost:8080/auth/register`, signupdata)
       .then(({ data }) => {
         const { error, token, message } = data;
         if (error) {
