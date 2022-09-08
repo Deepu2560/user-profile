@@ -24,7 +24,7 @@ This is MERN full stack project. In this you can see dashboard for user. After l
 <hr/>
 
 
-# Features
+# Backend
 
 * ##  Register new user 
 <img src="./images/register.png"/>
@@ -40,6 +40,17 @@ This is MERN full stack project. In this you can see dashboard for user. After l
 
 * ##  Getting user data by token
 <img src="./images/details.png"/>
+
+# Frontend
+
+* ##  Register new user 
+<img src="./images/signup.png"/>
+
+* ## Login with user of email and password
+<img src="./images/login.png"/>
+
+* ##  user Profile page
+<img src="./images/user.png"/>
 
 <hr />
 Thank you ❤️
