@@ -6,7 +6,9 @@ require("dotenv").config();
 // main connect function which connect server to backend I hided database link because of privacy purpose
 
 const connect = () => {
-  return mongoose.connect(`${process.env.URL}`);
+  return mongoose.connect(
+    "mongodb+srv://deepu2560:MlQjXpkKQPcvjCgj@cluster0.ep3wiix.mongodb.net/deepanshu?retryWrites=true&w=majority",
+  );
 };
 
 // export connect function
