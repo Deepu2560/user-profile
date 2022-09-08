@@ -8,4 +8,6 @@ const rootReducer = combineReducers({
   signup: SignupReducer,
 });
 
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+const middlewareEnhancer = applyMiddleware(thunk);
+
+export const store = createStore(rootReducer, middlewareEnhancer);

@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import "./signup.css";
 import { Form, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { handlesignup } from "../../Redux/Auth/signup/signupAction";
 
 export const SignupPage = () => {
+  // useNavigate hook to navigate to different routes
+  const navigate = useNavigate();
+
+  // dispatch for using redux
+  const dispatch = useDispatch();
+
   // sign Up form sample data
   const signUpSample = {
     firstName: "",
@@ -19,6 +29,11 @@ export const SignupPage = () => {
   // handle change of input element
   const handleChange = ({ name, value }) => {
     setSignupData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // submitting signup
+  const submitSignup = () => {
+    dispatch(handlesignup(dispatch, signupData));
   };
 
   // taking input from signUp data and setting default value
@@ -106,7 +121,12 @@ export const SignupPage = () => {
                 placeholder="Enter password"
               />
             </Form.Group>
-            <Button id="signup-form-button">Signup</Button>
+            <p id="page-navigate" onClick={() => navigate("/")}>
+              Already have account
+            </p>
+            <Button onClick={() => submitSignup()} id="signup-form-button">
+              Signup
+            </Button>
           </Form>
         </div>
       </div>

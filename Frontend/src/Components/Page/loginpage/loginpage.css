@@ -78,3 +78,9 @@
   background-color: #2a9d8f;
   color: #323232;
 }
+
+#page-navigate {
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 10px;
+}

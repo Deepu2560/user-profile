@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const LOG_IN_LOADING = "LOG_IN_LOADING";
 export const LOG_IN = "LOG_IN";
 export const LOG_IN_ERROR = "LOG_IN_ERROR";
@@ -15,7 +17,7 @@ export const handlelogin = (dispatch, signupdata) => {
   return function () {
     dispatch(loginLoading());
     axios
-      .get(`http://localhost:8080/auth/login`, signupdata)
+      .post(`http://localhost:8080/auth/login`, signupdata)
       .then(({ data }) => {
         const { error, token, message } = data;
         if (error) {
@@ -24,10 +26,12 @@ export const handlelogin = (dispatch, signupdata) => {
           return;
         }
         dispatch(loginSuccess(token));
+        return;
       })
       .catch((err) => {
         dispatch(loginError());
         console.log(err);
+        return;
       });
   };
 };
