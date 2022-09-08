@@ -35,3 +35,31 @@ export const handlelogin = (dispatch, signupdata) => {
       });
   };
 };
+
+export const handleUserEdit = (dispatch, updatedData, token) => {
+  return function () {
+    dispatch(loginLoading());
+    axios
+      .put(`http://localhost:8080/auth/edit/${updatedData._id}`, updatedData, {
+        headers: {
+          authorization: token,
+          "Content-Type": "application/json",
+        },
+      })
+      .then(({ data }) => {
+        const { error, token, message } = data;
+        if (error) {
+          alert(message);
+          dispatch(loginError());
+          return;
+        }
+        dispatch(loginSuccess(token));
+        return;
+      })
+      .catch((err) => {
+        dispatch(loginError());
+        console.log(err);
+        return;
+      });
+  };
+};

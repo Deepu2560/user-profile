@@ -1,16 +1,24 @@
 import axios from "axios";
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+
+import { logoutSuccess } from "../../Redux/Auth/login/loginAction";
 import "./userProfile.css";
 
 export const UserProfilePage = () => {
+  // useNavigate hook to navigate to different route
+  const navigate = useNavigate();
+
+  // dispatch to access redux reducer methods
+  const dispatch = useDispatch();
+
   // user data state variable
   const [userData, setUserData] = useState(null);
 
   // getting user data from token provided in redux
   const { token } = useSelector((state) => state.login);
+
   useEffect(() => {
     axios
       .get("http://localhost:8080/auth/user/details", {
@@ -23,6 +31,11 @@ export const UserProfilePage = () => {
         setUserData(() => data.user);
       });
   }, [token]);
+
+  // user loging out function
+  const handleLogout = () => {
+    dispatch(logoutSuccess());
+  };
 
   // if user we gets user data then main page will be displayed else loading is displayed
   if (userData) {
@@ -47,7 +60,10 @@ export const UserProfilePage = () => {
               <strong>Bio :-</strong> {userData.bio}
             </p>
           </div>
-          <button>EDIT</button>
+          <div id="user-detail-button">
+            <button onClick={() => navigate("/user/edit")}>EDIT</button>
+            <button onClick={() => handleLogout()}>Log Out</button>
+          </div>
         </div>
         <div id="avtar">
           <svg

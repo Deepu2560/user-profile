@@ -7,11 +7,6 @@
   margin-top: 60px;
 }
 
-#login > img {
-  width: 70%;
-  height: 100%;
-}
-
 #login-main-div {
   width: 30%;
   height: 100%;
@@ -59,6 +54,7 @@
 
 .login-form-label {
   font-size: x-large;
+  color: #bde0fe;
 }
 
 #login-button {
@@ -83,4 +79,17 @@
   text-decoration: underline;
   cursor: pointer;
   margin-top: 10px;
+}
+
+@media (max-width: 850px) {
+  #login-main-div {
+    width: 80%;
+  }
+}
+
+@media (max-width: 450px) {
+  #login-main-div {
+    width: 100%;
+    border-radius: 0%;
+  }
 }

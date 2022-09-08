@@ -67,7 +67,7 @@ const login = async (req, res) => {
 
     const token = newToken(user);
 
-    console.log(`=>> ${user.name} is logged in`);
+    console.log(`=>> ${user.email} is logged in`);
 
     res.status(200).send({ error: false, token });
   } catch (error) {

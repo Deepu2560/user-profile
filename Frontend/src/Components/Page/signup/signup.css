@@ -76,6 +76,7 @@ input[type="number"] {
   font-weight: bold;
   font-size: large;
   margin-top: 10px;
+  color: #bde0fe;
 }
 
 #signup-form-button {
@@ -94,4 +95,23 @@ input[type="number"] {
 #signup-form-button:hover {
   background-color: #2a9d8f;
   color: #323232;
+}
+
+@media (max-width: 850px) {
+  #signup-main-form {
+    width: 80%;
+  }
+}
+
+@media (max-width: 450px) {
+  #signup {
+    height: 740px;
+  }
+  #signup-main-form {
+    width: 100%;
+    border-radius: 0%;
+  }
+  #user-fullName {
+    display: block;
+  }
 }
