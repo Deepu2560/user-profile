@@ -5,9 +5,9 @@ This is MERN full stack project. In this you can see dashboard for user. After l
 
 * Clone this repository locally than to following for starting local server for backend or frontend.
   
- * <kbd>npm start</kbd> ==> After cloning this repository you can run npm start in terminal to start server on localhost.
+* <kbd>npm start</kbd> ==> After cloning this repository you can run npm start in terminal to start server on localhost.
  
- *<kbd>npm run dev</kbd> ==> TO start reactjs server go to Frontend folder and then run this command to start reactjs server and then go to http://localhost:5173/
+* <kbd>npm run dev</kbd> ==> To start reactjs server go to Frontend folder and then run this command to start reactjs server and then go to http://localhost:5173/
 <hr/>
 
 ## TechStacks
