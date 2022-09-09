@@ -28,7 +28,9 @@ export const UserEditPage = () => {
         },
       })
       .then(({ data }) => {
-        setUserData(() => data.user);
+      let userSampleData = { firstName: data.firstName, lastName: data.lastName, email: data.email, phone: data.phone, bio: data.bio };
+      
+        setUserData(() => userSampleData);
       });
   }, [token]);
 
@@ -45,7 +47,7 @@ export const UserEditPage = () => {
   // showing edit form else showing loading text
   if (userData) {
     // taking input from signUp data and setting default value
-    const { firstName, lastName, email, phone, password, bio } = userData;
+    const { firstName, lastName, email, phone, bio } = userData;
     return (
       <div id="signup">
         <div id="signup-main-form">
