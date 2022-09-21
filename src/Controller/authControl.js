@@ -35,7 +35,7 @@ const register = async (req, res) => {
 
     res.status(201).send({ error: false, token });
   } catch (error) {
-    console.log("=>>> Registration ERROR", error);
+    console.log("=>>> Registration server ERROR", error);
     res.status(500).send({ error: true, token: "", message: error.message });
   }
 };
@@ -71,8 +71,8 @@ const login = async (req, res) => {
 
     res.status(200).send({ error: false, token });
   } catch (error) {
-    console.log("=>>> Login ERROR", error);
-    res.status(500).send({ error: true, token: "", message: error.message });
+    console.log("=>>> Login server ERROR", error);
+    res.status(500).send({ error: true, message: error.message });
   }
 };
 
@@ -90,10 +90,31 @@ const edit = async (req, res) => {
 
     res.status(200).send({ error: false, token });
   } catch (error) {
-    console.log("=>>> Login ERROR", error);
-    res.status(500).send({ error: true, token: "", message: error.message });
+    console.log("=>>> User edit server ERROR", error);
+    res.status(500).send({ error: true, message: error.message });
+  }
+};
+
+const userDelete = async (req, res) => {
+  try {
+    let user = await user.findOne({ _id: req.params.id });
+
+    if (!user) {
+      console.log("=>> User not found");
+      return res.status(404).send({ error: true, message: "User not found" });
+    }
+
+    user = await User.findByIdAndDelete(req.params.id);
+
+    console.log(`=>> User delete with id ${req.params.id}`);
+    res
+      .status(200)
+      .send({ error: false, message: "User deleted successfully" });
+  } catch (error) {
+    console.log("=>>> User edit server ERROR", error);
+    res.status(500).send({ error: true, message: error.message });
   }
 };
 
 // exporting register and login function
-module.exports = { register, login, edit };
+module.exports = { register, login, edit, userDelete };

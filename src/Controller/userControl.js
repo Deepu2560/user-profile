@@ -11,7 +11,7 @@ const UserProfile = require("../Models/userProfileModel");
 const Autenticate = require("../Middleware/authenticate");
 
 // getting register, edit and login route function
-const { register, login, edit } = require("./authControl");
+const { register, login, edit, userDelete } = require("./authControl");
 
 // express router
 const router = express.Router();
@@ -58,6 +58,9 @@ router.post("/login", login);
 
 // router.put for edit user data from database
 router.put("/edit/:id", Autenticate, edit);
+
+// router.delete for delete user from database
+router.delete("/delete/:id", Autenticate, userDelete);
 
 // exporting routers
 module.exports = router;
