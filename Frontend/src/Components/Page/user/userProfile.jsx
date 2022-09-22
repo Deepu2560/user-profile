@@ -6,46 +6,40 @@ import { logoutSuccess } from "../../Redux/Auth/login/loginAction";
 import "./userProfile.css";
 
 export const UserProfilePage = () => {
-  // useNavigate hook to navigate to different route
+  // useNavigate hook to navigate to different route and dispatch to access redux reducer methods
   const navigate = useNavigate();
-
-  // dispatch to access redux reducer methods
   const dispatch = useDispatch();
 
   // Getting userData from userProfile reducer
-  const { userData } = useSelector((state) => state.userProfile);
-
-  // user loging out function
-  const handleLogout = () => {
-    dispatch(logoutSuccess());
-  };
+  const { userData, isSuccess } = useSelector((state) => state.userProfile);
 
   // if user we gets user data then main page will be displayed else loading is displayed
-  if (userData) {
+  if (isSuccess) {
     return (
       <div className="user-profile">
         <div id="user-data">
           <h1>User Details</h1>
           <div>
             <p>
-              <strong>First Name :-</strong> {userData.firstName}
+              <strong>First Name</strong> :- {("", userData.firstName)}
             </p>
             <p>
-              <strong>Last Name :-</strong> {userData.lastName}
+              <strong>Last Name</strong> :- {("", userData.lastName)}
             </p>
             <p>
-              <strong>Email :-</strong> {userData.email}
+              <strong>Email</strong> :- "",{userData.email}
             </p>
             <p>
-              <strong>Phone number :-</strong> {userData.phone}
+              <strong>Phone number</strong> :- {("", userData.phone)}
             </p>
             <p>
-              <strong>Bio :-</strong> {userData.bio}
+              <strong>Bio</strong> :- ", {userData.bio}
             </p>
           </div>
           <div id="user-detail-button">
+            <button>Delete Account</button>
             <button onClick={() => navigate("/user/edit")}>EDIT</button>
-            <button onClick={() => handleLogout()}>Log Out</button>
+            <button onClick={() => dispatch(logoutSuccess())}>Log Out</button>
           </div>
         </div>
         <div id="avtar">
