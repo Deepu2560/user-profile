@@ -22,16 +22,13 @@ export const handlelogin = (dispatch, signupdata) => {
         const { error, token, message } = data;
         if (error) {
           alert(message);
-          dispatch(loginError());
-          return;
+          return dispatch(loginError());
         }
-        dispatch(loginSuccess(token));
-        return;
+        return dispatch(loginSuccess(token));
       })
       .catch((err) => {
-        dispatch(loginError());
         console.log(err);
-        return;
+        return dispatch(loginError());
       });
   };
 };
@@ -50,16 +47,13 @@ export const handleUserEdit = (dispatch, updatedData, token) => {
         const { error, token, message } = data;
         if (error) {
           alert(message);
-          dispatch(loginError());
-          return;
+          return dispatch(loginError());
         }
-        dispatch(loginSuccess(token));
-        return;
+        return dispatch(loginSuccess(token));
       })
       .catch((err) => {
-        dispatch(loginError());
         console.log(err);
-        return;
+        return dispatch(loginError());
       });
   };
 };
