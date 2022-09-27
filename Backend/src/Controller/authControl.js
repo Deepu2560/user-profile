@@ -78,7 +78,7 @@ const login = async (req, res) => {
 
 const edit = async (req, res) => {
   try {
-    let user = await User.findByIdAndUpdate(req.params.id, {
+    let user = await User.findByIdAndUpdate(req.user._id, {
       $set: req.body,
     })
       .lean()
@@ -97,7 +97,7 @@ const edit = async (req, res) => {
 
 const userDelete = async (req, res) => {
   try {
-    let user = await user.findOne({ _id: req.params.id });
+    let user = await user.findOne({ _id: req.user._id });
 
     if (!user) {
       console.log("=>> User not found");

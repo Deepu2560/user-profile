@@ -57,10 +57,10 @@ router.post("/register", register);
 router.post("/login", login);
 
 // router.put for edit user data from database
-router.put("/edit/:id", Autenticate, edit);
+router.put("/edit", Autenticate, edit);
 
 // router.delete for delete user from database
-router.delete("/delete/:id", Autenticate, userDelete);
+router.delete("/delete", Autenticate, userDelete);
 
 // exporting routers
 module.exports = router;
