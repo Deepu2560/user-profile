@@ -50,7 +50,7 @@ This is MERN full stack project. In this you can see dashboard for user. After l
 <img src="./images/login.png"/>
 
 * ##  user Profile page
-<img src="./images/user.png"/>
+<img src="./images/use.png"/>
 
 <hr />
 Thank you ❤️
